@@ -1,3 +1,10 @@
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
+
 public class Tasks {
 
     /** Task 1
@@ -5,6 +12,23 @@ public class Tasks {
      * expect status 203
      * expect content type text
      * **/
+    @BeforeClass
+    public void init(){
+        RestAssured.baseURI = "https://httpstat.us";
+    }
+
+    @Test
+    public void statusCodeTest() {
+        given().
+                log().all().
+                when().
+                get("/203").
+                then().
+                statusCode(203).
+                contentType(ContentType.TEXT).
+                log().body();
+    }
+
 
     /** Task 2
      * create a request to https://httpstat.us/418

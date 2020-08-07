@@ -44,6 +44,7 @@ public class intro {
                         when().
                         get("us/90210").
                         then().
+                        log().body().
                         extract().
                         path("places[0].'place name'");
 
