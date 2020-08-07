@@ -6,6 +6,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -33,6 +34,20 @@ public class intro {
                 then().
                 spec(responseSpec).
                 body("places[0].'place name'", equalTo("Beverly Hills"));
+    }
+
+    @Test
+    public void extractPlaceNameFromResponseBody() {
+        String placeName =
+                given().
+                        spec(requestSpec).
+                        when().
+                        get("us/90210").
+                        then().
+                        extract().
+                        path("places[0].'place name'");
+
+        Assert.assertEquals(placeName, "Beverly Hills");
     }
 
 
