@@ -2,8 +2,10 @@ package review;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -12,6 +14,28 @@ import static org.hamcrest.Matchers.*;
 
 public class intro {
     private RequestSpecification requestSpec;
+    private ResponseSpecification responseSpec;
+
+    @BeforeClass
+    public  void createResponseSpecification() {
+        responseSpec = new ResponseSpecBuilder().
+                expectStatusCode(200).
+                expectContentType(ContentType.JSON).
+                build();
+    }
+
+    @Test
+    public void checkPlaceNameInResponseBodyWithResponseSpec() {
+        given().
+                spec(requestSpec).
+                when().
+                get("us/90210").
+                then().
+                spec(responseSpec).
+                body("places[0].'place name'", equalTo("Beverly Hills"));
+    }
+
+
 
     @BeforeClass
     public void createRequestSpecification(){
