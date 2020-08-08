@@ -20,7 +20,7 @@ public class BasqarAuth {
                 .contentType( ContentType.JSON )
                 .body( loginCredentials )
                 .when()
-                .post( "https://test-basqar.mersys.io/auth/login" )
+                .post( "https://basqar.techno.study" )
                 .then()
                 .statusCode( 200 )
                 .extract().response().getDetailedCookies();
@@ -29,7 +29,7 @@ public class BasqarAuth {
         given()
                 .cookies( cookies )
                 .when()
-                .get("https://test-basqar.mersys.io/school-service/api/countries")
+                .get("https://basqar.techno.study/school-service/api/countries")
                 .then()
                 .log().body()
                 .statusCode( 200 );

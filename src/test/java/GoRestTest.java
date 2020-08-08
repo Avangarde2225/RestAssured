@@ -28,14 +28,14 @@ public class GoRestTest {
     public void queryParamsTest(){
         given().
                 log().uri()
-                .param( "access-token", "j6XoJSutZrv-ikB-4X4_Zndi54_iqSZES-Ap" ).
-                param( "_format", "json" ).
-                when().
-                get("https://gorest.co.in/public-api/users").
-                then().
-                log().status().
-                log().body().
-                body( "_meta.code", equalTo( 200 ) );
+                .param( "access-token", "j6XoJSutZrv-ikB-4X4_Zndi54_iqSZES-Ap" )
+                .param( "_format", "json" )
+                .when()
+                .get("https://gorest.co.in/public-api/users")
+                .then()
+                .log().status()
+                .log().body()
+                .body( "_meta.code", equalTo( 200 ) );
     }
 
     @Test
@@ -130,8 +130,7 @@ public class GoRestTest {
                 .when()
                 .delete("posts/"+postId)
                 .then()
-                .body( "_meta.code", equalTo( 204 ) )
-        ;
+                .body( "_meta.code", equalTo( 204 ) );
 
         deleteUserByUserId( userId );
     }
