@@ -4,10 +4,12 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pojo.Todo;
+import pojo.task7.Page;
 
 import static io.restassured.RestAssured.given;
 
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class Tasks {
@@ -172,8 +174,25 @@ public class Tasks {
      * expect "data" property of your pojo to be not empty
      * **/
 
+    @Test
+    public void task7() {
+        Page page2 = given().
+                log().all().
+                when().
+                get("https://reqres.in/api/users?page=2").
+                then().
+                log().body().
+                statusCode(200).
+                contentType(ContentType.JSON).
 
-    /** Task 8
+                extract().as(Page.class);
+
+        assertThat(page2.getData(), not(empty()));
+
+
+    }
+
+        /** Task 8
      * create a pojo for posts
      * create a post request to https://gorest.co.in/public-api/posts
      * send your pojo inside body of your post request
