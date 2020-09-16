@@ -29,9 +29,9 @@ public class Tasks {
         given().
                 log().all().
                 when().
-                get("/203").
+                get("/200").
                 then().
-                statusCode(203).
+                statusCode(200).
                 contentType(ContentType.TEXT).
                 log().body();
     }
@@ -137,7 +137,7 @@ public class Tasks {
                 log().all().
                 statusCode(200).
                 contentType(ContentType.JSON).
-                body("data.first_name", hasItem("George"));
+                body("data.first_name", hasItem("Lindsay"));
 
 
     }
