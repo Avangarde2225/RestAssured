@@ -134,10 +134,10 @@ public class Tasks {
                 when().
                 get("https://reqres.in/api/users?page=2").
                 then().
-                log().all().
+                log().body().
                 statusCode(200).
                 contentType(ContentType.JSON).
-                body("data.first_name", hasItem("Lindsay"));
+                body("data[0].first_name", equalTo("Michael"));
 
 
     }

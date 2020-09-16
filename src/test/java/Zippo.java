@@ -34,7 +34,8 @@ public class Zippo {
                 .get("us/07011")
                 .then()
         .statusCode( 200 )
-        .body( "places[0].state", equalTo( "New Jersey" ) )
+                .log().body()
+        .body( "places[0].state", equalTo( "New Jersey" ))
         ;
     }
 }
