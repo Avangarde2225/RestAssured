@@ -28,7 +28,7 @@ public class GoRestTest {
     public void queryParamsTest(){
         given().
                 log().uri()
-                .param( "access-token", "j6XoJSutZrv-ikB-4X4_Zndi54_iqSZES-Ap" )
+                .param( "access-token", "jj-ay3daD0ZR14xidz7IUROPXvkjrD_7aVjt" )
                 .param( "_format", "json" )
                 .when()
                 .get("https://gorest.co.in/public-api/users")
@@ -43,7 +43,7 @@ public class GoRestTest {
         given()
                 .auth()         // basic auth
                 .preemptive()// basic auth
-                .basic("j6XoJSutZrv-ikB-4X4_Zndi54_iqSZES-Ap", "") // basic auth
+                .basic("pNqJLeycBKwoT7KMcKMSmGXCy4mnroG7ImGc", "") // basic auth
                  .log().headers()
                 .when()
                 .get("https://gorest.co.in/public-api/users").
@@ -82,7 +82,7 @@ public class GoRestTest {
     @BeforeClass
     private void createRequestSpec() {
         PreemptiveOAuth2HeaderScheme auth2Scheme = new PreemptiveOAuth2HeaderScheme ();
-        auth2Scheme.setAccessToken( "j6XoJSutZrv-ikB-4X4_Zndi54_iqSZES-Ap" );
+        auth2Scheme.setAccessToken( "pNqJLeycBKwoT7KMcKMSmGXCy4mnroG7ImGc" );
 
         requestSpec = new RequestSpecBuilder()
                 .setBaseUri("https://gorest.co.in/public-api/")
