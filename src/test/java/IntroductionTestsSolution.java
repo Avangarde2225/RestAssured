@@ -66,7 +66,8 @@ public class IntroductionTestsSolution {
                 when().
                 get( "/us/90210" ).
                 then().
-                statusCode( 200 );
+                log().body()
+                .statusCode( 200 );
     }
 
     @Test
@@ -75,7 +76,9 @@ public class IntroductionTestsSolution {
                 when().
                 get( "/us/90210" ).
                 then().
-                contentType( ContentType.JSON );
+                log().body()
+                .assertThat()
+                .contentType( ContentType.JSON );
     }
 
     @Test
@@ -94,7 +97,8 @@ public class IntroductionTestsSolution {
                 when().
                 get("http://zippopotam.us/us/90210").
                 then().
-                body( "places[0].state", equalTo( "California" ) );
+                log().body()
+                .body( "places[0].state", equalTo( "California" ) );
     }
 
     @Test

@@ -1,18 +1,18 @@
-import io.restassured.authentication.OAuth2Scheme;
+
 import io.restassured.authentication.PreemptiveOAuth2HeaderScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
-import io.restassured.specification.AuthenticationSpecification;
+
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pojo.GoRestPost;
 import pojo.GoRestUser;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
