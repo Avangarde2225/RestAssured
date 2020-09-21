@@ -38,9 +38,10 @@ public class IntroductionTestsSolution {
                 spec(requestSpec). // using spec here
                 when().
                 get("us/90210").
-                then().
-                spec(responseSpec). // using spec here
-                body("places[0].'place name'", equalTo("Beverly Hills"));
+                then()
+
+                .spec(responseSpec)// using spec here
+                .body("places[0].'place name'", equalTo("Beverly Hills"));
     }
 
 
@@ -68,6 +69,17 @@ public class IntroductionTestsSolution {
                 then().
                 log().body()
                 .statusCode( 200 );
+    }
+    @Test
+    public void extractBody(){
+       String placeName= given().
+                when().
+                get("/tr/34295").
+                then().
+               log().body().
+                extract()
+                .path( "places[1].'place name'");
+        Assert.assertEquals(placeName,"Beşyol Mah.");
     }
 
     @Test
