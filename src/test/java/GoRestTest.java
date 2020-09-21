@@ -35,7 +35,7 @@ public class GoRestTest {
                 .then()
                 .log().status()
                 .log().body()
-                .body( "_meta.code", equalTo( 200 ) );
+                .body( "code", equalTo( 200 ) );
     }
 
     @Test
@@ -50,7 +50,7 @@ public class GoRestTest {
                 then().
                 log().status().
                 log().body().
-                body( "_meta.code", equalTo( 200 ) );
+                body( "code", equalTo( 200 ) );
     }
 
 
@@ -65,7 +65,7 @@ public class GoRestTest {
                 then().
                 log().status().
                 log().body().
-                body( "_meta.code", equalTo( 200 ) );
+                body( "code", equalTo( 200 ) );
     }
 
     @Test
@@ -76,7 +76,7 @@ public class GoRestTest {
                 then().
                 log().status().
                 log().body().
-                body( "_meta.code", equalTo( 401 ) );
+                body( "code", equalTo( 401 ) );
     }
 
     @BeforeClass
@@ -109,7 +109,7 @@ public class GoRestTest {
                 .post( "posts" )
                 .then()
                 .log().body()
-                .body( "_meta.code", equalTo( 201 ) )
+                .body( "code", equalTo( 201 ) )
                 .contentType( ContentType.JSON )
                 .extract().jsonPath().getString( "result.id" );
 
@@ -123,14 +123,14 @@ public class GoRestTest {
                 .when()
                 .patch( "posts/"+postId )
                 .then()
-                .body( "_meta.code", equalTo( 200 ) );
+                .body( "code", equalTo( 200 ) );
 
         given()
                 .spec( requestSpec )
                 .when()
                 .delete("posts/"+postId)
                 .then()
-                .body( "_meta.code", equalTo( 204 ) );
+                .body( "code", equalTo( 204 ) );
 
         deleteUserByUserId( userId );
     }
@@ -149,7 +149,7 @@ public class GoRestTest {
                 .when()
                 .post("users")
                 .then()
-                .body( "_meta.code", equalTo( 422 ) );
+                .body( "code", equalTo( 422 ) );
 
         // Get user part
         given()
@@ -157,8 +157,8 @@ public class GoRestTest {
                 .when()
                 .get("users/" + userId)
                 .then()
-                .body( "_meta.code", equalTo( 200 ) )
-                .body( "result.email", equalTo( user.getEmail() ) )
+                .body( "code", equalTo( 200 ) )
+                .body( "data.email", equalTo( user.getEmail() ) )
         ;
 
         // Update user part
@@ -172,7 +172,7 @@ public class GoRestTest {
                 .when()
                 .patch( "users/"+userId )
                 .then()
-                .body( "_meta.code", equalTo( 200 ) );
+                .body( "code", equalTo( 200 ) );
 
         // Get user update check part
         given()
@@ -180,9 +180,9 @@ public class GoRestTest {
                 .when()
                 .get("users/"+userId)
                 .then()
-                .body( "_meta.code", equalTo( 200 ) )
-                .body( "result.first_name", equalTo( updateUser.get( "first_name" ) ) )
-                .body( "result.last_name", equalTo( updateUser.get( "last_name" ) ) )
+                .body( "code", equalTo( 200 ) )
+                .body( "data.first_name", equalTo( updateUser.get( "first_name" ) ) )
+                .body( "data.last_name", equalTo( updateUser.get( "last_name" ) ) )
         ;
 
         // Delete user part
@@ -208,7 +208,7 @@ public class GoRestTest {
                 .when()
                 .patch( "users/"+ userId )
                 .then()
-                .body( "_meta.code", equalTo( 404 ) );
+                .body( "code", equalTo( 404 ) );
     }
 
     private void deleteUserByUserId(String userId) {
@@ -217,7 +217,7 @@ public class GoRestTest {
                 .when()
                 .delete("users/"+userId)
                 .then()
-                .body( "_meta.code", equalTo( 204 ) )
+                .body( "code", equalTo( 204 ) )
         ;
     }
 
@@ -228,7 +228,7 @@ public class GoRestTest {
                 .when()
                 .post("users")
                 .then().log().everything()
-                .body( "_meta.code", equalTo( 201 ) )
+                .body( "code", equalTo( 201 ) )
                 .log().everything()
                 .extract().jsonPath().getString( "result.id" );
     }

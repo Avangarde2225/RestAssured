@@ -76,6 +76,7 @@ public class ReviewTasksSolution {
                 .when()
                 .get("/{country}/{zipcode}")
                 .then()
+                .log().body()
                 .body( "places.'place name'", hasSize( numberOfPlaces ) )
         ;
     }
