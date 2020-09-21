@@ -161,7 +161,8 @@ public class Tasks {
                 log().all().
                 statusCode(200).
                 contentType(ContentType.JSON).
-                extract().as( Todo.class );
+                extract().body().as( Todo.class );
+
         Assert.assertFalse(todo.getCompleted());
 
 
