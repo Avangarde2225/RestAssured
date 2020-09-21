@@ -148,7 +148,8 @@ public class IntroductionTestsSolution {
                 when().
                 get("/{country}/{zipcode}").
                 then().
-                log().status().
+                log().body()
+                .log().status().
                 statusCode( 200 );
     }
 
