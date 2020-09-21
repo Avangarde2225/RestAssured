@@ -73,12 +73,14 @@ public class IntroductionTestsSolution {
     @Test
     public void extractBody(){
        String placeName= given().
+               spec(requestSpec).
                 when().
                 get("/tr/34295").
                 then().
                log().body().
                 extract()
                 .path( "places[1].'place name'");
+
         Assert.assertEquals(placeName,"Beşyol Mah.");
     }
 
