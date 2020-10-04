@@ -31,7 +31,7 @@ public class Zippo {
     public void getAzip() {
         given()
                 .when()
-                .get("us/07011")
+                .get("us/08854")
                 .then()
         .statusCode( 200 )
                 .log().body()
