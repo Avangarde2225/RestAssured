@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class TasksSolution {
-    @Test
+    @Test(enabled = false)
     public void task1() {
         given().
                 when().
@@ -17,10 +17,11 @@ public class TasksSolution {
                 then().
                 statusCode( 203 ).
                 contentType( ContentType.TEXT ).
+                log().body().
                 body( equalTo( "203 Non-Authoritative Information" ) );
     }
 
-    @Test
+    @Test(enabled = false)
     public void task2() {
         given().
                 when().
@@ -63,6 +64,7 @@ public class TasksSolution {
                 then().
                 statusCode( 200 ).
                 contentType( ContentType.JSON ).
+                log().body().
                 body( "completed", equalTo( false ) );
     }
 
@@ -117,6 +119,6 @@ public class TasksSolution {
 
 //        Assert.assertNotEquals( page2.getData().size(), 0, "Data should not be empty");
 
-        assertThat( page2.getData(), not( empty() ));
+        assertThat( page2.getData(),  not(empty() ));
     }
 }

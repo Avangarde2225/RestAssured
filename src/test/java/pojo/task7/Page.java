@@ -1,15 +1,29 @@
 package pojo.task7;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
 public class Page {
+
+
     private Integer page;
     private Integer perPage;
     private Integer total;
     private Integer totalPages;
     private List<User> data;
+    private Integer ad;
+
+    //@JsonIgnoreProperties(ignoreUnknown = true)
+    public Integer getAd() {
+        return ad;
+    }
+
+    public void setAd(Integer ad) {
+        this.ad = ad;
+    }
+
 
     public Integer getPage() {
         return page;
