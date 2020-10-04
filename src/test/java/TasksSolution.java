@@ -50,6 +50,7 @@ public class TasksSolution {
                 then().
                 statusCode( 200 ).
                 contentType( ContentType.JSON ).
+                log().body().
                 extract().path( "title" );
         Assert.assertEquals( title, "quis ut nam facilis et officia qui" );
     }
