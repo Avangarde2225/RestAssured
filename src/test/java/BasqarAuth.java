@@ -20,7 +20,7 @@ public class BasqarAuth {
                 .contentType( ContentType.JSON )
                 .body( loginCredentials )
                 .when()
-                .post( "https://basqar.techno.study" )
+                .post( "https://basqar.techno.study/auth/login" )
                 .then()
                 .statusCode( 200 )
                 .extract().response().getDetailedCookies();
