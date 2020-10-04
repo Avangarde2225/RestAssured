@@ -35,7 +35,7 @@ public class Zippo {
                 .then()
         .statusCode( 200 )
                 .log().body()
-        .body( "places[0].state", not(equalToIgnoringCase( "New York" )))
+        .body( "places[1].state", not(equalToIgnoringCase( "New York" )))
         ;
     }
 }
